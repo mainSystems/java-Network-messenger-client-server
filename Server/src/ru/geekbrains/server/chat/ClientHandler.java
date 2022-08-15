@@ -1,8 +1,12 @@
 package ru.geekbrains.server.chat;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import ru.geekbrains.commands.Command;
+import ru.geekbrains.commands.CommandType;
+import ru.geekbrains.commands.commands.AuthCommandData;
+import ru.geekbrains.commands.commands.PrivateMessageCommandData;
+import ru.geekbrains.commands.commands.PublicMessageCommandData;
+
+import java.io.*;
 import java.net.Socket;
 
 public class ClientHandler {
@@ -10,8 +14,9 @@ public class ClientHandler {
     public static final String AUTH_OK_COMMAND = "/authOk";
     private MyServer server;
     private final Socket clientSocket;
-    private DataInputStream inputSocket;
-    private DataOutputStream outputSocket;
+    private ObjectInputStream inputSocket;
+    private ObjectOutputStream outputSocket;
+    private String username;
 
     public ClientHandler(MyServer server, Socket clientSocket) {
         this.server = server;
@@ -19,8 +24,8 @@ public class ClientHandler {
     }
 
     public void handle() throws IOException {
-        inputSocket = new DataInputStream(clientSocket.getInputStream());
-        outputSocket = new DataOutputStream(clientSocket.getOutputStream());
+        outputSocket = new ObjectOutputStream(clientSocket.getOutputStream());
+        inputSocket = new ObjectInputStream(clientSocket.getInputStream());
 
         new Thread(() -> {
             try {
@@ -41,17 +46,24 @@ public class ClientHandler {
 
     private void authenticate() throws IOException {
         while (true) {
-            String message = inputSocket.readUTF();
-            if (message.startsWith(AUTH_COMMAND)) {
-                String[] parts = message.split(" ");
-                String login = parts[1];
-                String password = parts[2];
-                String userName = this.server.getAuthService().getuserNameByLoginAndPassword(login, password);
+            Command command = readCommand();
 
-                if (userName == null) {
-                    sendMessage("Invalid username or password" + userName + ":" + password);
+            if (command == null) {
+                continue;
+            }
+
+            if (command.getType() == CommandType.AUTH) {
+                AuthCommandData data = (AuthCommandData) command.getData();
+                String login = data.getLogin();
+                String password = data.getPassword();
+                String username = this.server.getAuthService().getuserNameByLoginAndPassword(login, password);
+                if (username == null) {
+                    sendCommand(Command.errorCommand("Некорректные имя пользователя или пароль"));
+                } else if (server.isUserNameBusy(username)) {
+                    sendCommand(Command.errorCommand("Такой пользователь уже существует"));
                 } else {
-                    sendMessage(String.format("%s, %s", AUTH_OK_COMMAND, userName));
+                    this.username = username;
+                    sendCommand(Command.authOkCommand(username));
                     server.subscribe(this);
                     return;
                 }
@@ -59,14 +71,42 @@ public class ClientHandler {
         }
     }
 
+    private Command readCommand() throws IOException {
+        Command command = null;
+
+        try {
+            command = (Command) inputSocket.readObject();
+        } catch (ClassNotFoundException e) {
+            System.err.println("Failed to read Command class");
+            e.printStackTrace();
+        }
+
+        return command;
+    }
+
+    public void sendCommand(Command command) throws IOException {
+        outputSocket.writeObject(command);
+    }
+
     private void readMessages() throws IOException {
         while (true) {
-            String message = inputSocket.readUTF();
-            System.out.println("message = " + message);
-            if (message.startsWith("/end")) {
-                return;
-            } else {
-                processMessage(message);
+            Command command = readCommand();
+            if (command == null) {
+                continue;
+            }
+            switch (command.getType()) {
+                case PRIVATE_MESSAGE: {
+                    PrivateMessageCommandData data = (PrivateMessageCommandData) command.getData();
+                    String receiver = data.getReceiver();
+                    String privateMessage = data.getMessage();
+                    server.sendPrivateMessage(this, receiver, privateMessage);
+                    break;
+                }
+                case PUBLIC_MESSAGE:
+                    PublicMessageCommandData data = (PublicMessageCommandData) command.getData();
+                    processMessage(data.getMessage());
+                    break;
+
             }
         }
     }
@@ -75,14 +115,14 @@ public class ClientHandler {
         this.server.broadcastMessages(message, this);
     }
 
-    protected void sendMessage(String message) throws IOException {
-        this.outputSocket.writeUTF(message);
-    }
-
     private void closeConnection() throws IOException {
         inputSocket.close();
         outputSocket.close();
         clientSocket.close();
         server.unsubscribe(this);
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

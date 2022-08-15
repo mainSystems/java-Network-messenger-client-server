@@ -1,5 +1,6 @@
 package ru.geekbrains.server.chat;
 
+import ru.geekbrains.commands.Command;
 import ru.geekbrains.server.chat.auth.AuthService;
 
 import java.io.IOException;
@@ -20,10 +21,8 @@ public class MyServer {
                 waitAndProcessClientConnection(serverSocket);
             }
         } catch (IOException e) {
-            System.err.println("Failded to bind port: " + port);
+            System.err.println("Failed to bind port: " + port);
         }
-
-
     }
 
     private void waitAndProcessClientConnection(ServerSocket serverSocket) throws IOException {
@@ -35,23 +34,55 @@ public class MyServer {
         clientHandler.handle();
     }
 
-    protected void broadcastMessages(String message, ClientHandler sender) throws IOException {
+    public synchronized boolean isUserNameBusy(String username) {
+        for (ClientHandler client : clients) {
+            if (client.getUsername().equals(username)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    protected synchronized void broadcastMessages(String message, ClientHandler sender) throws IOException {
         for (ClientHandler client : clients) {
             if (client != sender) {
-                client.sendMessage(message);
+                client.sendCommand(Command.clientMessageCommand(sender.getUsername(), message));
             }
         }
     }
 
-    protected void subscribe(ClientHandler clientHandler) {
+    protected synchronized void subscribe(ClientHandler clientHandler) throws IOException {
         clients.add(clientHandler);
+        notifyUserListUpdated();
     }
 
-    protected void unsubscribe(ClientHandler clientHandler) {
+    protected synchronized void unsubscribe(ClientHandler clientHandler) throws IOException {
         clients.remove(clientHandler);
+        notifyUserListUpdated();
     }
 
     public AuthService getAuthService() {
         return authService;
     }
+
+    public synchronized void sendPrivateMessage(ClientHandler sender, String recipient, String privateMessage) throws IOException {
+        for (ClientHandler client : clients) {
+            if (client != sender && client.getUsername().equals(recipient)) {
+                client.sendCommand(Command.clientMessageCommand(sender.getUsername(), privateMessage));
+            }
+        }
+    }
+
+    private void notifyUserListUpdated() throws IOException {
+        List<String> users = new ArrayList<>();
+        for (ClientHandler client : clients) {
+            users.add(client.getUsername());
+        }
+
+        for (ClientHandler client : clients) {
+            client.sendCommand(Command.updateUserListCommand(users));
+        }
+    }
+
 }

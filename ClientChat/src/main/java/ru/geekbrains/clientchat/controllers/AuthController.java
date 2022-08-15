@@ -1,24 +1,22 @@
 package ru.geekbrains.clientchat.controllers;
 
 
-
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import ru.geekbrains.clientchat.ClientChat;
-import ru.geekbrains.clientchat.ErrorMessage;
-import ru.geekbrains.clientchat.Network;
+import ru.geekbrains.clientchat.dialogs.Dialogs;
+import ru.geekbrains.clientchat.model.Network;
+import ru.geekbrains.clientchat.model.ReadMessageListener;
+import ru.geekbrains.commands.Command;
+import ru.geekbrains.commands.CommandType;
+import ru.geekbrains.commands.commands.AuthOkCommandData;
 
 import java.io.IOException;
-import java.util.function.Consumer;
-
 
 public class AuthController {
-    private ClientChat clientChat;
-    public static final String AUTH_COMMAND = "/auth";
-    public static final String AUTH_OK_COMMAND = "/authOk";
 
     @FXML
     public TextField loginField;
@@ -27,48 +25,56 @@ public class AuthController {
     @FXML
     public Button authButton;
 
+    public ReadMessageListener readMessageListener;
+
+
     @FXML
     public void executeAuth() {
         String login = loginField.getText();
         String password = passwordField.getText();
 
         if (login == null || password == null || login.isBlank() || password.isBlank()) {
-            System.err.println("Login and pass must be set");
+            Dialogs.AuthError.EMPTY_CREDENTIALS.show();
+            System.err.println(Dialogs.AuthError.EMPTY_CREDENTIALS);
             return;
         }
 
-        String authCommandMessage = String.format("%s %s %s", AUTH_COMMAND,login,password);
+        if (!isConnectedToServer()) {
+            Dialogs.NetworkError.CANT_CONNECT_TO_SERVER.show();
+            System.err.println(Dialogs.NetworkError.CANT_CONNECT_TO_SERVER);
+        }
 
         try {
-            Network.getInstance().sendMessage(authCommandMessage);
+            Network.getInstance().sendAuthMessage(login, password);
         } catch (IOException e) {
-            System.err.println(ErrorMessage.ERROR_NETWORK_COMMUNICATION);
+            System.err.println(Dialogs.NetworkError.ERROR_NETWORK_COMMUNICATION);
         }
 
     }
 
-
     public void initMessageHandler() {
-        Network.getInstance().waitMessage(new Consumer<String>() {
+        ClientChat.getInstance().authTimer(ClientChat.AUTH_TIMER_START);
+
+        readMessageListener = getNetwork().addReadMessageListener(new ReadMessageListener() {
             @Override
-            public void accept(String message) {
-                if (message.startsWith(AUTH_OK_COMMAND)) {
-                    Thread.currentThread().interrupt();
+            public void processReceiveCommand(Command command) {
+                if (command.getType() == CommandType.AUTH_OK) {
+                    ClientChat.getInstance().authTimer(ClientChat.AUTH_TIMER_STOP);
+
+                    AuthOkCommandData data = (AuthOkCommandData) command.getData();
+                    String username = data.getUserName();
 
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
-                            String[] parts = message.split(" ");
-                            String username = parts[1];
-                            clientChat.getChatStage().setTitle(username);
-                            clientChat.getAuthStage().close();
+                            ClientChat.getInstance().switchToMainChatWindow(username);
                         }
                     });
                 } else {
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
-                            clientChat.showErrorDialog(ErrorMessage.NO_SUCH_USER);
+                            Dialogs.AuthError.INVALID_CREDENTIALS.show();
                         }
                     });
                 }
@@ -76,7 +82,16 @@ public class AuthController {
         });
     }
 
-    public void setClientChat(ClientChat clientChat) {
-        this.clientChat = clientChat;
+    public boolean isConnectedToServer() {
+        Network network = Network.getInstance();
+        return network.isConnected() || network.connect();
+    }
+
+    private Network getNetwork() {
+        return Network.getInstance();
+    }
+
+    public void close() {
+        getNetwork().removeReadMessageListener(readMessageListener);
     }
 }
