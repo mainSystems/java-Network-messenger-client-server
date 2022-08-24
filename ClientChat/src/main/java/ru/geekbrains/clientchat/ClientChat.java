@@ -105,7 +105,7 @@ public class ClientChat extends Application {
                     public void run() {
                         System.err.println("auth canceled: " + new Date());
                         Dialogs.AuthError.TIMEOUT.show();
-                        System.err.printf("%s%n%s", Dialogs.AuthError.TIMEOUT,"close connection");
+                        System.err.printf("%s%n%s", Dialogs.AuthError.TIMEOUT, "close connection");
                         getAuthController().close();
                         getAuthStage().close();
                         getChatStage().close();

@@ -78,10 +78,6 @@ public class Network {
         return command;
     }
 
-    public void sendAuthTimerCommand(String controlTimer, int authTime) throws IOException {
-        sendCommand(Command.authTimerCommand(controlTimer, authTime));
-    }
-
     public void sendMessage(String message) throws IOException {
         sendCommand(Command.publicMessageCommand(message));
     }
@@ -92,6 +88,10 @@ public class Network {
 
     public void sendAuthMessage(String login, String password) throws IOException {
         sendCommand(Command.authCommand(login, password));
+    }
+
+    public void sendSystemMessage(String message) throws IOException {
+        sendCommand(Command.systemMessageCommand(message));
     }
 
     public Thread startReadMessageProcess() {
