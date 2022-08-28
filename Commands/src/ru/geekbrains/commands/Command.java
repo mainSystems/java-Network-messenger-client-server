@@ -16,13 +16,6 @@ public class Command implements Serializable {
         return command;
     }
 
-    public static Command authTimerCommand(String controlTimer, int authTime){
-        Command command = new Command();
-        command.data = new authTimerCommandData(controlTimer, authTime);
-        command.type = CommandType.AUTH_TIMER;
-        return command;
-    }
-
     public static Command authOkCommand(String userName) {
         Command command = new Command();
         command.data = new AuthOkCommandData(userName);
@@ -62,6 +55,13 @@ public class Command implements Serializable {
         Command command = new Command();
         command.type = CommandType.UPDATE_USERS_LIST;
         command.data = new UpdateUserListCommandData(users);
+        return command;
+    }
+
+    public static Command systemMessageCommand(String message) {
+        Command command = new Command();
+        command.type = CommandType.SYSTEM_MESSAGE;
+        command.data = new SystemMessageCommandData(message);
         return command;
     }
 

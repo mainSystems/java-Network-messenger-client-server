@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import ru.geekbrains.clientchat.ClientChat;
 import ru.geekbrains.clientchat.dialogs.Dialogs;
 import ru.geekbrains.clientchat.model.Network;
 import ru.geekbrains.clientchat.model.ReadMessageListener;
@@ -22,12 +23,6 @@ import java.util.List;
 
 public class ClientController {
 
-//    private static final List<String> USERS_TEST_DATA = List.of(
-//            "username1",
-//            "username2",
-//            "username3"
-//    );
-
     @FXML
     public TextField messageTextArea;
     @FXML
@@ -38,12 +33,8 @@ public class ClientController {
     public ListView userList;
 
 
-//    @FXML
-//    public void initialize() {
-//        userList.setItems(FXCollections.observableArrayList(USERS_TEST_DATA));
-//    }
-
     public void sendMessage() {
+        String recipient = null;
         String message = messageTextArea.getText();
 
         if (message.isEmpty()) {
@@ -51,16 +42,19 @@ public class ClientController {
             return;
         }
 
-        String sender = null;
         if (!userList.getSelectionModel().isEmpty()) {
-            sender = userList.getSelectionModel().getSelectedItem().toString();
+            recipient = userList.getSelectionModel().getSelectedItem().toString();
         }
 
         try {
-            if (sender != null) {
-                Network.getInstance().sendPrivateMessage(sender, message);
+            if (recipient != null) {
+                Network.getInstance().sendPrivateMessage(recipient, message);
             } else {
-                Network.getInstance().sendMessage(message);
+                if (message.startsWith("/")) {
+                    Network.getInstance().sendSystemMessage(message);
+                } else {
+                    Network.getInstance().sendMessage(message);
+                }
             }
 
         } catch (IOException e) {

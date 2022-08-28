@@ -1,11 +1,14 @@
 package ru.geekbrains.server.chat;
 
 import ru.geekbrains.commands.Command;
+import ru.geekbrains.commands.SqlCommandType;
 import ru.geekbrains.server.chat.auth.AuthService;
+import ru.geekbrains.server.chat.auth.SqliteTask;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +73,29 @@ public class MyServer {
         for (ClientHandler client : clients) {
             if (client != sender && client.getUsername().equals(recipient)) {
                 client.sendCommand(Command.clientMessageCommand(sender.getUsername(), privateMessage));
+            }
+        }
+    }
+
+    public synchronized void systemCommandMessage(String login, String message) throws IOException {
+        try {
+            SqliteTask.connect();
+            System.out.println("Connection to SQLite has been established.");
+            String[] parts = message.split(" ");
+            if (parts.length > 1) {
+                String newUsername = parts[1];
+                String resultSystemCommand = SqliteTask.sqlTask(SqlCommandType.UPDATE, login, newUsername);
+                System.out.println(resultSystemCommand);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            System.out.println("Connection to SQLite has NOT been established.");
+        } finally {
+            try {
+                SqliteTask.disconnect();
+                System.out.println("Connection to SQLite has been closed.");
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
     }
