@@ -1,11 +1,11 @@
-package ru.geekbrains.server.chat.auth;
+package ru.geekbrains.server.chat;
 
 
 import ru.geekbrains.commands.SqlCommandType;
 
 import java.sql.*;
 
-public class SqliteTask {
+public class SqliteHandler {
     private static final String DB = "auth";
     private static final String sqliteUrl = "jdbc:sqlite:C:\\java\\javaGB\\Server\\" + DB + ".db";
     private static Connection connection = null;
@@ -18,12 +18,14 @@ public class SqliteTask {
         statement = connection.createStatement();
     }
 
-    //    public static String sqlTask(SqlCommandType command, String login, String password) throws SQLException {
     public static String sqlTask(SqlCommandType command, String... arg) throws SQLException {
         switch (command) {
-            case SELECT:
-                ResultSet rs = statement.executeQuery(String.format("Select * from " + DB + " where login = '%s' and password = '%s'", arg[0], arg[1]));
-                return (rs.getString("username"));
+            case SELECT_USERNAME_AUTH:
+                return (statement.executeQuery(String.format("Select * from " + DB + " where login = '%s' and password = '%s'", arg[0], arg[1])).getString("username"));
+            case SELECT_LOGIN:
+                return (statement.executeQuery(String.format("Select * from " + DB + " where username = '%s'", arg[0])).getString("login"));
+            case SELECT_USERNAME:
+                return (statement.executeQuery(String.format("Select * from " + DB + " where login = '%s'", arg[0])).getString("username"));
             case UPDATE:
                 statement.executeUpdate(String.format("update " + DB + " set username = '%s' where login = '%s'", arg[1], arg[0]));
                 return "update done";

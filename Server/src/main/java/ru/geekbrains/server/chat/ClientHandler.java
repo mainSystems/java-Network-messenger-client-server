@@ -11,10 +11,7 @@ import java.io.*;
 import java.net.Socket;
 
 public class ClientHandler {
-    public static final String AUTH_COMMAND = "/auth";
-    public static final String AUTH_OK_COMMAND = "/authOk";
-    public static final String CHANGE = "/change";
-    private MyServer server;
+    private final MyServer server;
     private final Socket clientSocket;
     private ObjectInputStream inputSocket;
     private ObjectOutputStream outputSocket;
@@ -22,13 +19,17 @@ public class ClientHandler {
     private String login;
 
 
+    public ClientHandler(MyServer server, Socket clientSocket) {
+        this.server = server;
+        this.clientSocket = clientSocket;
+    }
+
     public String getLogin() {
         return login;
     }
 
-    public ClientHandler(MyServer server, Socket clientSocket) {
-        this.server = server;
-        this.clientSocket = clientSocket;
+    public String getUsername() {
+        return username;
     }
 
     public void handle() throws IOException {
@@ -70,7 +71,6 @@ public class ClientHandler {
                 } else if (server.isUserNameBusy(username)) {
                     sendCommand(Command.errorCommand("Такой пользователь уже существует"));
                 } else {
-                    //this.username = username;
                     sendCommand(Command.authOkCommand(username));
                     server.subscribe(this);
                     return;
@@ -103,22 +103,20 @@ public class ClientHandler {
                 continue;
             }
             switch (command.getType()) {
-                case PRIVATE_MESSAGE: {
+                case PRIVATE_MESSAGE -> {
                     PrivateMessageCommandData data = (PrivateMessageCommandData) command.getData();
                     String receiver = data.getReceiver();
                     String privateMessage = data.getMessage();
                     server.sendPrivateMessage(this, receiver, privateMessage);
-                    break;
                 }
-                case SYSTEM_MESSAGE: {
+                case SYSTEM_MESSAGE -> {
                     SystemMessageCommandData data = (SystemMessageCommandData) command.getData();
                     server.systemCommandMessage(login, data.getSystemMessage());
-                    break;
                 }
-                case PUBLIC_MESSAGE:
+                case PUBLIC_MESSAGE -> {
                     PublicMessageCommandData data = (PublicMessageCommandData) command.getData();
                     processMessage(data.getMessage());
-                    break;
+                    }
             }
         }
     }
@@ -132,9 +130,5 @@ public class ClientHandler {
         outputSocket.close();
         clientSocket.close();
         server.unsubscribe(this);
-    }
-
-    public String getUsername() {
-        return username;
     }
 }

@@ -45,6 +45,7 @@ public class AuthController {
         }
 
         try {
+            ClientChat.setLogin(login);
             Network.getInstance().sendAuthMessage(login, password);
         } catch (IOException e) {
             System.err.println(Dialogs.NetworkError.ERROR_NETWORK_COMMUNICATION);

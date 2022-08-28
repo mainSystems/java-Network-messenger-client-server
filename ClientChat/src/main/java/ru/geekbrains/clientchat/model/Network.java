@@ -20,9 +20,9 @@ public class Network {
     private ObjectOutputStream socketOutput;
     private Thread readMessageProcess;
 
-    private String host;
-    private int port;
-    private boolean connected;
+    private final String host;
+    private final int port;
+    private boolean connected = false;
 
     private Network(String host, int port) {
         this.host = host;
@@ -47,12 +47,11 @@ public class Network {
             socketOutput = new ObjectOutputStream(socket.getOutputStream());
             readMessageProcess = startReadMessageProcess();
             connected = true;
-            return true;
         } catch (IOException e) {
             System.err.printf("Network module: %s: %s%n", Dialogs.NetworkError.CANT_CONNECT_TO_SERVER, SERVER_ADDR);
             e.printStackTrace();
-            return false;
         }
+        return connected;
     }
 
     public void sendCommand(Command command) throws IOException {
