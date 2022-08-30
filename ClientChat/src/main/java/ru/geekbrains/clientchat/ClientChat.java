@@ -29,6 +29,7 @@ public class ClientChat extends Application {
     public static final String AUTH_TIMER_STOP = "stop";
     private Stage chatStage;
     private Stage authStage;
+    private static String login;
 
     private FXMLLoader chatWindowLoader;
     private FXMLLoader authLoader;
@@ -109,8 +110,6 @@ public class ClientChat extends Application {
                         getAuthController().close();
                         getAuthStage().close();
                         getChatStage().close();
-//                        authStage.close();
-//                        chatStage.close();
                     }
                 });
             }
@@ -148,5 +147,13 @@ public class ClientChat extends Application {
 
     public AuthController getAuthController() {
         return authLoader.getController();
+    }
+
+    public static String getLogin() {
+        return login;
+    }
+
+    public static void setLogin(String login) {
+        ClientChat.login = login;
     }
 }

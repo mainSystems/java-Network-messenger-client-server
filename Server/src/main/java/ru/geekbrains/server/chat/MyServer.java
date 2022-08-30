@@ -3,7 +3,6 @@ package ru.geekbrains.server.chat;
 import ru.geekbrains.commands.Command;
 import ru.geekbrains.commands.SqlCommandType;
 import ru.geekbrains.server.chat.auth.AuthService;
-import ru.geekbrains.server.chat.auth.SqliteTask;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -47,14 +46,6 @@ public class MyServer {
         return false;
     }
 
-    protected synchronized void broadcastMessages(String message, ClientHandler sender) throws IOException {
-        for (ClientHandler client : clients) {
-            if (client != sender) {
-                client.sendCommand(Command.clientMessageCommand(sender.getUsername(), message));
-            }
-        }
-    }
-
     protected synchronized void subscribe(ClientHandler clientHandler) throws IOException {
         clients.add(clientHandler);
         notifyUserListUpdated();
@@ -69,22 +60,50 @@ public class MyServer {
         return authService;
     }
 
-    public synchronized void sendPrivateMessage(ClientHandler sender, String recipient, String privateMessage) throws IOException {
+    protected synchronized void broadcastMessages(String message, ClientHandler sender) throws IOException {
         for (ClientHandler client : clients) {
-            if (client != sender && client.getUsername().equals(recipient)) {
-                client.sendCommand(Command.clientMessageCommand(sender.getUsername(), privateMessage));
+            if (client == sender) {
+                ServerFileHandler.appendToFile(sender.getLogin(), client.getUsername(), message);
+            }
+
+            if (client != sender) {
+                ServerFileHandler.appendToFile(client.getLogin(), sender.getUsername(), message);
+                client.sendCommand(Command.clientMessageCommand(sender.getUsername(), message));
+            }
+        }
+    }
+
+    public synchronized void sendPrivateMessage(ClientHandler sender, String receiver, String message) throws IOException {
+        try {
+            SqliteHandler.connect();
+            String loginReceiver = SqliteHandler.sqlTask(SqlCommandType.SELECT_LOGIN, receiver);
+            ServerFileHandler.appendToFile(sender.getLogin(), receiver, message);
+            ServerFileHandler.appendToFile(loginReceiver, sender.getLogin(), message);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                SqliteHandler.disconnect();
+                System.out.println("Connection to SQLite has been closed.");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        for (ClientHandler client : clients) {
+            if (client != sender && client.getUsername().equals(receiver)) {
+                client.sendCommand(Command.clientMessageCommand(sender.getUsername(), message));
             }
         }
     }
 
     public synchronized void systemCommandMessage(String login, String message) throws IOException {
         try {
-            SqliteTask.connect();
+            SqliteHandler.connect();
             System.out.println("Connection to SQLite has been established.");
             String[] parts = message.split(" ");
             if (parts.length > 1) {
                 String newUsername = parts[1];
-                String resultSystemCommand = SqliteTask.sqlTask(SqlCommandType.UPDATE, login, newUsername);
+                String resultSystemCommand = SqliteHandler.sqlTask(SqlCommandType.UPDATE, login, newUsername);
                 System.out.println(resultSystemCommand);
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -92,7 +111,7 @@ public class MyServer {
             System.out.println("Connection to SQLite has NOT been established.");
         } finally {
             try {
-                SqliteTask.disconnect();
+                SqliteHandler.disconnect();
                 System.out.println("Connection to SQLite has been closed.");
             } catch (SQLException e) {
                 e.printStackTrace();

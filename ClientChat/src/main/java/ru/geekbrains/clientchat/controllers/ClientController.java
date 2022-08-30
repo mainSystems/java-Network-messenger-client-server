@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import ru.geekbrains.clientchat.ChatFileHandler;
 import ru.geekbrains.clientchat.ClientChat;
 import ru.geekbrains.clientchat.dialogs.Dialogs;
 import ru.geekbrains.clientchat.model.Network;
@@ -19,7 +20,6 @@ import ru.geekbrains.commands.commands.UpdateUserListCommandData;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.List;
 
 public class ClientController {
 
@@ -32,9 +32,11 @@ public class ClientController {
     @FXML
     public ListView userList;
 
+    private String recipient = null;
+
 
     public void sendMessage() {
-        String recipient = null;
+        String sender = ClientChat.getLogin();
         String message = messageTextArea.getText();
 
         if (message.isEmpty()) {
@@ -60,8 +62,7 @@ public class ClientController {
         } catch (IOException e) {
             Dialogs.NetworkError.CANT_SEND_MESSAGE_TO_SERVER.show();
         }
-
-        appendMessageToChat("Me", message);
+        appendMessageToChat(sender, message);
     }
 
     public void appendMessageToChat(String sender, String message) {
@@ -78,6 +79,16 @@ public class ClientController {
     }
 
     public void initMessageHandler() {
+        String login = ClientChat.getLogin();
+        if (ChatFileHandler.checkFile(login)) {
+            String messageHistory = ChatFileHandler.appendFromFile(login);
+            chatTextArea.appendText("loading history...");
+            chatTextArea.appendText(System.lineSeparator());
+            chatTextArea.appendText(messageHistory);
+            chatTextArea.appendText("that`s all");
+            chatTextArea.appendText(System.lineSeparator());
+        }
+
         Network.getInstance().addReadMessageListener(new ReadMessageListener() {
             @Override
             public void processReceiveCommand(Command command) {

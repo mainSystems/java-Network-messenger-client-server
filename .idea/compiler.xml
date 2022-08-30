@@ -12,7 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ClientChat" target="13" />
-      <module name="Server" target="1.13" />
+      <module name="Server" target="14" />
     </bytecodeTargetLevel>
   </component>
 </project>
