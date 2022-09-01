@@ -9,6 +9,10 @@ import ru.geekbrains.commands.commands.SystemMessageCommandData;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 
 public class ClientHandler {
     private final MyServer server;
@@ -36,21 +40,25 @@ public class ClientHandler {
         outputSocket = new ObjectOutputStream(clientSocket.getOutputStream());
         inputSocket = new ObjectInputStream(clientSocket.getInputStream());
 
-        new Thread(() -> {
-            try {
-                authenticate();
-                readMessages();
-            } catch (IOException e) {
-                System.err.println("Failed to read message from client");
-                e.printStackTrace();
-            } finally {
+        ExecutorService pool = Executors.newCachedThreadPool();
+        pool.execute(new Runnable() {
+            @Override
+            public void run() {
                 try {
-                    closeConnection();
+                    authenticate();
+                    readMessages();
                 } catch (IOException e) {
-                    System.err.println("Failed to cloe connection");
+                    System.err.println("Failed to read message from client");
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        closeConnection();
+                    } catch (IOException e) {
+                        System.err.println("Failed to cloe connection");
+                    }
                 }
             }
-        }).start();
+        });
     }
 
     private void authenticate() throws IOException {
@@ -116,7 +124,7 @@ public class ClientHandler {
                 case PUBLIC_MESSAGE -> {
                     PublicMessageCommandData data = (PublicMessageCommandData) command.getData();
                     processMessage(data.getMessage());
-                    }
+                }
             }
         }
     }
