@@ -7,12 +7,12 @@ import ru.geekbrains.commands.commands.PrivateMessageCommandData;
 import ru.geekbrains.commands.commands.PublicMessageCommandData;
 import ru.geekbrains.commands.commands.SystemMessageCommandData;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
 
 public class ClientHandler {
     private final MyServer server;
@@ -53,6 +53,7 @@ public class ClientHandler {
                 } finally {
                     try {
                         closeConnection();
+                        pool.shutdownNow();
                     } catch (IOException e) {
                         System.err.println("Failed to cloe connection");
                     }
