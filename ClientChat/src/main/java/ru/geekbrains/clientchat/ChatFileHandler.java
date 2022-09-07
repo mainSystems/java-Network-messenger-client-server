@@ -1,18 +1,19 @@
 package ru.geekbrains.clientchat;
 
 import org.apache.commons.io.input.ReversedLinesFileReader;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ChatFileHandler {
     private static final String USER_DIR = "userHistory/";
     private static final String FILE_ASGMT = "_history";
     private static final int loadHistory = 100;
+    private static final Logger logger = LogManager.getLogger(ChatFileHandler.class);
 
     public static String appendFromFile(String fileName) {
         StringBuilder sb = new StringBuilder();
@@ -25,13 +26,15 @@ public class ChatFileHandler {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("cant read file: " + fileName);
+            logger.error("cant read file: " + fileName);
         }
 
         for (String str : result) {
             sb.insert(0, str + "\n");
         }
-        System.out.println(sb.toString().length());
+        if (logger.isDebugEnabled()) {
+            logger.debug(sb.toString().length());
+        }
         return sb.toString();
     }
 

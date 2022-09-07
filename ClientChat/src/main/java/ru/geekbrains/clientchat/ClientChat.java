@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.geekbrains.clientchat.controllers.AuthController;
 import ru.geekbrains.clientchat.controllers.ClientController;
 import ru.geekbrains.clientchat.dialogs.Dialogs;
@@ -33,6 +35,8 @@ public class ClientChat extends Application {
 
     private FXMLLoader chatWindowLoader;
     private FXMLLoader authLoader;
+
+    private static final Logger logger = LogManager.getLogger(ClientChat.class);
 
 
     public static void main(String[] args) {
@@ -75,9 +79,11 @@ public class ClientChat extends Application {
     }
 
     public void authTimer(String command) {
-        System.out.println("auth start: " + new Date());
+        logger.info("auth start: " + new Date());
         if (timer != null) {
-            System.err.println("auth timer already set!! \"fixed with sweat and blood.\" ");
+            if (logger.isDebugEnabled()) {
+                logger.debug("auth timer already set!! \"fixed with sweat and blood.\" ");
+            }
             timer.cancel();
         } else {
             timer = new Timer("auth timer");
@@ -88,11 +94,11 @@ public class ClientChat extends Application {
         switch (command) {
             case AUTH_TIMER_START:
                 timer.schedule(task, AUTH_TIME * 1000);
-                System.out.println("We are start");
+                logger.info("timer start");
                 break;
             case AUTH_TIMER_STOP:
                 timer.cancel();
-                System.out.println("we are stopped");
+                logger.info("timer stopped");
                 break;
         }
     }
@@ -104,9 +110,9 @@ public class ClientChat extends Application {
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        System.err.println("auth canceled: " + new Date());
+                        logger.info("auth canceled: " + new Date());
                         Dialogs.AuthError.TIMEOUT.show();
-                        System.err.printf("%s%n%s", Dialogs.AuthError.TIMEOUT, "close connection");
+                        logger.error("{}: {}", Dialogs.AuthError.TIMEOUT, "close connection");
                         getAuthController().close();
                         getAuthStage().close();
                         getChatStage().close();

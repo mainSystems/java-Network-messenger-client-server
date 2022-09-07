@@ -1,5 +1,7 @@
 package ru.geekbrains.server.chat;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.geekbrains.commands.Command;
 import ru.geekbrains.commands.CommandType;
 import ru.geekbrains.commands.commands.AuthCommandData;
@@ -21,6 +23,7 @@ public class ClientHandler {
     private ObjectOutputStream outputSocket;
     private String username;
     private String login;
+    private static final Logger logger = LogManager.getLogger(ClientHandler.class);
 
 
     public ClientHandler(MyServer server, Socket clientSocket) {
@@ -48,14 +51,14 @@ public class ClientHandler {
                     authenticate();
                     readMessages();
                 } catch (IOException e) {
-                    System.err.println("Failed to read message from client");
+                    logger.error("Failed to read message from client");
                     e.printStackTrace();
                 } finally {
                     try {
                         closeConnection();
                         pool.shutdownNow();
                     } catch (IOException e) {
-                        System.err.println("Failed to cloe connection");
+                        logger.error("Failed to close connection");
                     }
                 }
             }
@@ -94,7 +97,7 @@ public class ClientHandler {
         try {
             command = (Command) inputSocket.readObject();
         } catch (ClassNotFoundException e) {
-            System.err.println("Failed to read Command class");
+            logger.error("Failed to read Command class");
             e.printStackTrace();
         }
 

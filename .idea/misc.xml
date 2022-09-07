@@ -5,6 +5,8 @@
       <list>
         <option value="$PROJECT_DIR$/ClientChat/pom.xml" />
         <option value="$PROJECT_DIR$/Server/pom.xml" />
+        <option value="$PROJECT_DIR$/src/ru/geekbrains/java3/lesson6/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>

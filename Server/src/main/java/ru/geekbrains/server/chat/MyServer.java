@@ -1,5 +1,7 @@
 package ru.geekbrains.server.chat;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.geekbrains.commands.Command;
 import ru.geekbrains.commands.SqlCommandType;
 import ru.geekbrains.server.chat.auth.AuthService;
@@ -14,23 +16,24 @@ import java.util.List;
 public class MyServer {
     private AuthService authService;
     private final List<ClientHandler> clients = new ArrayList<>();
+    private static final Logger  logger = LogManager.getLogger(MyServer.class);
 
     public void start(int port) {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
-            System.out.printf("Server started: %s%nWaiting connection...%n", serverSocket);
+            logger.info("Server started: {} Waiting connection...", serverSocket);
             authService = new AuthService();
             while (true) {
                 waitAndProcessClientConnection(serverSocket);
             }
         } catch (IOException e) {
-            System.err.println("Failed to bind port: " + port);
+            logger.error("Failed to bind port: " + port);
         }
     }
 
     private void waitAndProcessClientConnection(ServerSocket serverSocket) throws IOException {
-        System.out.println("Waiting client connection...");
+        logger.info("Waiting client connection...");
         Socket clientSocket = serverSocket.accept();
-        System.out.println("Client connected: " + clientSocket.toString());
+        logger.info("Client connected: " + clientSocket.toString());
 
         ClientHandler clientHandler = new ClientHandler(this, clientSocket);
         clientHandler.handle();
@@ -84,7 +87,7 @@ public class MyServer {
         } finally {
             try {
                 SqliteHandler.disconnect();
-                System.out.println("Connection to SQLite has been closed.");
+                logger.info("Connection to SQLite has been closed.");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -99,20 +102,22 @@ public class MyServer {
     public synchronized void systemCommandMessage(String login, String message) throws IOException {
         try {
             SqliteHandler.connect();
-            System.out.println("Connection to SQLite has been established.");
+            logger.info("Connection to SQLite has been established.");
             String[] parts = message.split(" ");
             if (parts.length > 1) {
                 String newUsername = parts[1];
                 String resultSystemCommand = SqliteHandler.sqlTask(SqlCommandType.UPDATE, login, newUsername);
-                System.out.println(resultSystemCommand);
+                if (logger.isDebugEnabled()) {
+                    logger.debug(resultSystemCommand);
+                }
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            System.out.println("Connection to SQLite has NOT been established.");
+            logger.error("Connection to SQLite has NOT been established.");
         } finally {
             try {
                 SqliteHandler.disconnect();
-                System.out.println("Connection to SQLite has been closed.");
+                logger.info("Connection to SQLite has been closed.");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

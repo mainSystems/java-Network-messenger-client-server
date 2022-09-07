@@ -1,5 +1,7 @@
 package ru.geekbrains.clientchat.model;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.geekbrains.clientchat.dialogs.Dialogs;
 import ru.geekbrains.commands.Command;
 
@@ -23,6 +25,8 @@ public class Network {
     private final String host;
     private final int port;
     private boolean connected = false;
+
+    private static final Logger logger = LogManager.getLogger(Network.class);
 
     private Network(String host, int port) {
         this.host = host;
@@ -48,7 +52,7 @@ public class Network {
             readMessageProcess = startReadMessageProcess();
             connected = true;
         } catch (IOException e) {
-            System.err.printf("Network module: %s: %s%n", Dialogs.NetworkError.CANT_CONNECT_TO_SERVER, SERVER_ADDR);
+            logger.error("Network module: {}: {}", Dialogs.NetworkError.CANT_CONNECT_TO_SERVER, SERVER_ADDR);
             e.printStackTrace();
         }
         return connected;
@@ -58,7 +62,7 @@ public class Network {
         try {
             socketOutput.writeObject(command);
         } catch (IOException e) {
-            System.err.println("Не удалось отправить сообщение на сервер");
+            logger.error("Не удалось отправить сообщение на сервер");
             e.printStackTrace();
             throw e;
         }
@@ -70,7 +74,7 @@ public class Network {
         try {
             command = (Command) socketInput.readObject();
         } catch (ClassNotFoundException e) {
-            System.err.println("Failed to read Command class");
+            logger.error("Failed to read Command class");
             e.printStackTrace();
         }
 
@@ -110,7 +114,7 @@ public class Network {
                         }
 
                     } catch (IOException e) {
-                        System.err.println(Dialogs.NetworkError.FAILED_TO_GET_MESSAGE);
+                        logger.error(Dialogs.NetworkError.FAILED_TO_GET_MESSAGE);
                         e.printStackTrace();
                         close();
                         break;
@@ -140,7 +144,7 @@ public class Network {
             socket.close();
             readMessageProcess.interrupt();
         } catch (IOException e) {
-            System.out.println(Dialogs.NetworkError.CANT_CLOSE_CONNECT_TO_SERVER);
+            logger.error(Dialogs.NetworkError.CANT_CLOSE_CONNECT_TO_SERVER);
             e.printStackTrace();
         }
     }
