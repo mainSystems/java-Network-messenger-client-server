@@ -1,0 +1,14 @@
+ERROR 2022-09-06 21:20:28 [JavaFX Application Thread] ru.geekbrains.clientchat.controllers.AuthController (AuthController.java:41) - EMPTY_CREDENTIALS
+ERROR 2022-09-06 21:20:33 [JavaFX Application Thread] ru.geekbrains.clientchat.controllers.AuthController (AuthController.java:41) - EMPTY_CREDENTIALS
+INFO  2022-09-06 21:34:35 [JavaFX Application Thread] ru.geekbrains.clientchat.ClientChat (ClientChat.java:82) - auth start: Tue Sep 06 21:34:35 MSK 2022
+INFO  2022-09-06 21:34:35 [JavaFX Application Thread] ru.geekbrains.clientchat.ClientChat (ClientChat.java:95) - timer start
+INFO  2022-09-06 21:34:40 [Thread-4] ru.geekbrains.clientchat.ClientChat (ClientChat.java:82) - auth start: Tue Sep 06 21:34:40 MSK 2022
+DEBUG 2022-09-06 21:34:40 [Thread-4] ru.geekbrains.clientchat.ClientChat (ClientChat.java:84) - auth timer already set!! "fixed with sweat and blood." 
+INFO  2022-09-06 21:34:40 [Thread-4] ru.geekbrains.clientchat.ClientChat (ClientChat.java:99) - timer stopped
+DEBUG 2022-09-06 21:34:40 [JavaFX Application Thread] ru.geekbrains.clientchat.ChatFileHandler (ChatFileHandler.java:35) - 212
+INFO  2022-09-06 21:34:47 [JavaFX Application Thread] ru.geekbrains.clientchat.ClientChat (ClientChat.java:82) - auth start: Tue Sep 06 21:34:47 MSK 2022
+INFO  2022-09-06 21:34:47 [JavaFX Application Thread] ru.geekbrains.clientchat.ClientChat (ClientChat.java:95) - timer start
+INFO  2022-09-06 21:34:52 [Thread-4] ru.geekbrains.clientchat.ClientChat (ClientChat.java:82) - auth start: Tue Sep 06 21:34:52 MSK 2022
+DEBUG 2022-09-06 21:34:52 [Thread-4] ru.geekbrains.clientchat.ClientChat (ClientChat.java:84) - auth timer already set!! "fixed with sweat and blood." 
+INFO  2022-09-06 21:34:52 [Thread-4] ru.geekbrains.clientchat.ClientChat (ClientChat.java:99) - timer stopped
+DEBUG 2022-09-06 21:34:52 [JavaFX Application Thread] ru.geekbrains.clientchat.ChatFileHandler (ChatFileHandler.java:35) - 39

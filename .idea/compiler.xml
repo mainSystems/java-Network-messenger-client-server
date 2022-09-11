@@ -8,11 +8,16 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ClientChat" />
         <module name="Server" />
+        <module name="untitled104" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ClientChat" target="13" />
+      <module name="lesson6" target="14" />
+      <module name="lessons" target="14" />
       <module name="Server" target="14" />
+      <module name="src" target="14" />
+      <module name="untitled104" target="14" />
     </bytecodeTargetLevel>
   </component>
 </project>

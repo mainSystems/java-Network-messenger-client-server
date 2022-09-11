@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.geekbrains.clientchat.ClientChat;
 import ru.geekbrains.clientchat.dialogs.Dialogs;
 import ru.geekbrains.clientchat.model.Network;
@@ -26,6 +28,7 @@ public class AuthController {
     public Button authButton;
 
     public ReadMessageListener readMessageListener;
+    private static final Logger logger = LogManager.getLogger(AuthController.class);
 
 
     @FXML
@@ -35,20 +38,20 @@ public class AuthController {
 
         if (login == null || password == null || login.isBlank() || password.isBlank()) {
             Dialogs.AuthError.EMPTY_CREDENTIALS.show();
-            System.err.println(Dialogs.AuthError.EMPTY_CREDENTIALS);
+            logger.error(Dialogs.AuthError.EMPTY_CREDENTIALS);
             return;
         }
 
         if (!isConnectedToServer()) {
             Dialogs.NetworkError.CANT_CONNECT_TO_SERVER.show();
-            System.err.println(Dialogs.NetworkError.CANT_CONNECT_TO_SERVER);
+            logger.error(Dialogs.NetworkError.CANT_CONNECT_TO_SERVER);
         }
 
         try {
             ClientChat.setLogin(login);
             Network.getInstance().sendAuthMessage(login, password);
         } catch (IOException e) {
-            System.err.println(Dialogs.NetworkError.ERROR_NETWORK_COMMUNICATION);
+            logger.error(Dialogs.NetworkError.ERROR_NETWORK_COMMUNICATION);
         }
 
     }

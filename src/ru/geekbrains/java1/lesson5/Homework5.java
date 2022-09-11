@@ -19,7 +19,7 @@ public class Homework5 {
         staff1.printInfo();
 
         for (int i = 0; i < staffArray.length; i++) {
-            staffArray[i] = new Staff("Test" + i, "Test Position", "test@company.com", i, i, randomAge.nextInt(diff + 1));
+            staffArray[i] = new Staff("ru/geekbrains/Test" + i, "Test Position", "test@company.com", i, i, randomAge.nextInt(diff + 1));
         }
 
         for (Staff employee : staffArray) {
