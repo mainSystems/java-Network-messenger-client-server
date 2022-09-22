@@ -12,3 +12,13 @@ INFO  2022-09-06 21:34:52 [Thread-4] ru.geekbrains.clientchat.ClientChat (Client
 DEBUG 2022-09-06 21:34:52 [Thread-4] ru.geekbrains.clientchat.ClientChat (ClientChat.java:84) - auth timer already set!! "fixed with sweat and blood." 
 INFO  2022-09-06 21:34:52 [Thread-4] ru.geekbrains.clientchat.ClientChat (ClientChat.java:99) - timer stopped
 DEBUG 2022-09-06 21:34:52 [JavaFX Application Thread] ru.geekbrains.clientchat.ChatFileHandler (ChatFileHandler.java:35) - 39
+INFO  2022-09-07 22:34:52 [JavaFX Application Thread] ru.geekbrains.clientchat.ClientChat (ClientChat.java:82) - auth start: Wed Sep 07 22:34:52 MSK 2022
+INFO  2022-09-07 22:34:52 [JavaFX Application Thread] ru.geekbrains.clientchat.ClientChat (ClientChat.java:97) - timer start
+INFO  2022-09-07 22:34:57 [Thread-4] ru.geekbrains.clientchat.ClientChat (ClientChat.java:82) - auth start: Wed Sep 07 22:34:57 MSK 2022
+DEBUG 2022-09-07 22:34:57 [Thread-4] ru.geekbrains.clientchat.ClientChat (ClientChat.java:85) - auth timer already set!! "fixed with sweat and blood." 
+INFO  2022-09-07 22:34:57 [Thread-4] ru.geekbrains.clientchat.ClientChat (ClientChat.java:101) - timer stopped
+DEBUG 2022-09-07 22:34:57 [JavaFX Application Thread] ru.geekbrains.clientchat.ChatFileHandler (ChatFileHandler.java:36) - 243
+INFO  2022-09-08 21:20:31 [JavaFX Application Thread] ru.geekbrains.clientchat.ClientChat (ClientChat.java:82) - auth start: Thu Sep 08 21:20:31 MSK 2022
+INFO  2022-09-08 21:20:31 [JavaFX Application Thread] ru.geekbrains.clientchat.ClientChat (ClientChat.java:97) - timer start
+INFO  2022-09-11 14:57:05 [JavaFX Application Thread] ru.geekbrains.clientchat.ClientChat (ClientChat.java:82) - auth start: Sun Sep 11 14:57:05 MSK 2022
+INFO  2022-09-11 14:57:05 [JavaFX Application Thread] ru.geekbrains.clientchat.ClientChat (ClientChat.java:97) - timer start
