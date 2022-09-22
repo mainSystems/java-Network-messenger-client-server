@@ -1,6 +1,7 @@
 package ru.geekbrains.commands;
 
 public enum CommandType {
+    REG,
     AUTH,
     SYSTEM_MESSAGE,
     PUBLIC_MESSAGE,

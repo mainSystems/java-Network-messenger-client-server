@@ -89,6 +89,10 @@ public class Network {
         sendCommand(Command.privateMessageCommand(receiver, message));
     }
 
+    public void sendRegMessage(String login, String password) throws IOException {
+        sendCommand(Command.regCommand(login, password));
+    }
+
     public void sendAuthMessage(String login, String password) throws IOException {
         sendCommand(Command.authCommand(login, password));
     }

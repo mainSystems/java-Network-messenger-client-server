@@ -9,6 +9,12 @@ public class Command implements Serializable {
     private Object data;
     private CommandType type;
 
+    public static Command regCommand(String login, String password){
+        Command command = new Command();
+        command.data = new RegCommandData(login, password);
+        command.type = CommandType.REG;
+        return command;
+    }
     public static Command authCommand(String login, String password){
         Command command = new Command();
         command.data = new AuthCommandData(login, password);

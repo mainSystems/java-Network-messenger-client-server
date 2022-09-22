@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import ru.geekbrains.commands.Command;
 import ru.geekbrains.commands.SqlCommandType;
 import ru.geekbrains.server.chat.auth.AuthService;
+import ru.geekbrains.server.chat.auth.RegService;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -15,12 +16,14 @@ import java.util.List;
 
 public class MyServer {
     private AuthService authService;
+    private RegService regService;
     private final List<ClientHandler> clients = new ArrayList<>();
     private static final Logger  logger = LogManager.getLogger(MyServer.class);
 
     public void start(int port) {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             logger.info("Server started: {} Waiting connection...", serverSocket);
+            regService = new RegService();
             authService = new AuthService();
             while (true) {
                 waitAndProcessClientConnection(serverSocket);
@@ -61,6 +64,10 @@ public class MyServer {
 
     public AuthService getAuthService() {
         return authService;
+    }
+
+    public RegService getRegService() {
+        return regService;
     }
 
     protected synchronized void broadcastMessages(String message, ClientHandler sender) throws IOException {

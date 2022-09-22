@@ -30,7 +30,7 @@ public class SqliteHandler {
                 statement.executeUpdate(String.format("update " + DB + " set username = '%s' where login = '%s'", arg[1], arg[0]));
                 return "update done";
             case INSERT:
-                statement.executeQuery(String.format("insert into " + DB + " (login, password, username) values ('%s','%s','%s'))", arg[0], arg[1], arg[0]));
+                statement.executeUpdate(String.format("insert into " + DB + " (login, password, username) values ('%s','%s','%s')", arg[0], arg[1], arg[0]));
                 return "done";
             default:
                 return null;

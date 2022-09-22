@@ -4,10 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.geekbrains.commands.Command;
 import ru.geekbrains.commands.CommandType;
-import ru.geekbrains.commands.commands.AuthCommandData;
-import ru.geekbrains.commands.commands.PrivateMessageCommandData;
-import ru.geekbrains.commands.commands.PublicMessageCommandData;
-import ru.geekbrains.commands.commands.SystemMessageCommandData;
+import ru.geekbrains.commands.commands.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -65,12 +62,20 @@ public class ClientHandler {
         });
     }
 
+
     private void authenticate() throws IOException {
         while (true) {
             Command command = readCommand();
 
             if (command == null) {
                 continue;
+            }
+
+            if (command.getType() == CommandType.REG) {
+                RegCommandData data = (RegCommandData) command.getData();
+                login = data.getLogin();
+                String password = data.getPassword();
+                this.server.getRegService().regUser(login, password);
             }
 
             if (command.getType() == CommandType.AUTH) {

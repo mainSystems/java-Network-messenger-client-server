@@ -26,10 +26,34 @@ public class AuthController {
     public PasswordField passwordField;
     @FXML
     public Button authButton;
+    @FXML
+    public Button regButton;
 
     public ReadMessageListener readMessageListener;
     private static final Logger logger = LogManager.getLogger(AuthController.class);
 
+    @FXML
+    public void executeReg() {
+        String login = loginField.getText();
+        String password = passwordField.getText();
+
+        if (login == null || password == null || login.isBlank() || password.isBlank()) {
+            Dialogs.AuthError.EMPTY_CREDENTIALS.show();
+            logger.error(Dialogs.AuthError.EMPTY_CREDENTIALS);
+            return;
+        }
+
+        if (!isConnectedToServer()) {
+            Dialogs.NetworkError.CANT_CONNECT_TO_SERVER.show();
+            logger.error(Dialogs.NetworkError.CANT_CONNECT_TO_SERVER);
+        }
+
+        try {
+            Network.getInstance().sendRegMessage(login, password);
+        } catch (IOException e) {
+            logger.error(Dialogs.NetworkError.ERROR_NETWORK_COMMUNICATION);
+        }
+    }
 
     @FXML
     public void executeAuth() {
