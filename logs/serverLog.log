@@ -214,3 +214,193 @@ INFO  2022-09-22 23:10:16 [main] ru.geekbrains.server.chat.MyServer (MyServer.ja
 INFO  2022-09-22 23:10:16 [pool-3-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
 INFO  2022-09-22 23:10:16 [pool-3-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
 ERROR 2022-09-22 23:10:19 [pool-3-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-22 23:15:34 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:25) - Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=8189] Waiting connection...
+INFO  2022-09-22 23:15:34 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-22 23:15:48 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1771,localport=8189]
+INFO  2022-09-22 23:15:48 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-22 23:15:48 [pool-2-thread-1] ru.geekbrains.server.chat.auth.RegService (RegService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-22 23:15:48 [pool-2-thread-1] ru.geekbrains.server.chat.auth.RegService (RegService.java:25) - Connection to SQLite has been closed.
+INFO  2022-09-22 23:15:51 [pool-2-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-22 23:15:51 [pool-2-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-22 23:15:53 [pool-2-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 22:53:30 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:25) - Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=8189] Waiting connection...
+INFO  2022-09-23 22:53:30 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 22:53:44 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1146,localport=8189]
+INFO  2022-09-23 22:53:44 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 22:53:44 [pool-2-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 22:53:44 [pool-2-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+INFO  2022-09-23 22:54:19 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1160,localport=8189]
+INFO  2022-09-23 22:54:19 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 22:54:19 [pool-3-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 22:54:19 [pool-3-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+INFO  2022-09-23 23:08:01 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:25) - Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=8189] Waiting connection...
+INFO  2022-09-23 23:08:01 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:08:19 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1171,localport=8189]
+INFO  2022-09-23 23:08:19 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:08:19 [pool-2-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:08:20 [pool-2-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:08:32 [pool-2-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:09:17 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1175,localport=8189]
+INFO  2022-09-23 23:09:17 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:09:17 [pool-3-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:09:17 [pool-3-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:09:28 [pool-3-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:12:08 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1179,localport=8189]
+INFO  2022-09-23 23:12:08 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:12:08 [pool-4-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:12:08 [pool-4-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:12:17 [pool-4-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:13:46 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1183,localport=8189]
+INFO  2022-09-23 23:13:46 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:13:46 [pool-5-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:13:46 [pool-5-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:13:59 [pool-5-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:18:11 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1187,localport=8189]
+INFO  2022-09-23 23:18:11 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:18:11 [pool-6-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:18:11 [pool-6-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:18:16 [pool-6-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:21:13 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1191,localport=8189]
+INFO  2022-09-23 23:21:13 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:21:13 [pool-7-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:21:13 [pool-7-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:21:18 [pool-7-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:23:09 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1195,localport=8189]
+INFO  2022-09-23 23:23:09 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:23:09 [pool-8-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:23:09 [pool-8-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:23:12 [pool-8-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:23:33 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1199,localport=8189]
+INFO  2022-09-23 23:23:33 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:23:33 [pool-9-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+ERROR 2022-09-23 23:23:33 [pool-9-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:21) - Connection to SQLite has NOT been established.
+INFO  2022-09-23 23:23:33 [pool-9-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:23:37 [pool-9-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:32:12 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1204,localport=8189]
+INFO  2022-09-23 23:32:12 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:32:12 [pool-10-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:32:12 [pool-10-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:32:18 [pool-10-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:32:51 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1208,localport=8189]
+INFO  2022-09-23 23:32:51 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:32:51 [pool-11-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:32:51 [pool-11-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:32:54 [pool-11-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:33:08 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:25) - Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=8189] Waiting connection...
+INFO  2022-09-23 23:33:08 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:33:26 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1215,localport=8189]
+INFO  2022-09-23 23:33:26 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:33:26 [pool-2-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:33:26 [pool-2-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:33:30 [pool-2-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:34:56 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1219,localport=8189]
+INFO  2022-09-23 23:34:56 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:34:56 [pool-3-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:34:56 [pool-3-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:35:00 [pool-3-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:37:15 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1225,localport=8189]
+INFO  2022-09-23 23:37:15 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:37:15 [pool-4-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:37:15 [pool-4-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:37:31 [pool-4-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:38:03 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1229,localport=8189]
+INFO  2022-09-23 23:38:03 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:38:03 [pool-5-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:38:03 [pool-5-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:38:07 [pool-5-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:40:01 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1233,localport=8189]
+INFO  2022-09-23 23:40:01 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:40:01 [pool-6-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:40:01 [pool-6-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:40:08 [pool-6-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:40:49 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1237,localport=8189]
+INFO  2022-09-23 23:40:49 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:40:49 [pool-7-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:40:49 [pool-7-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:40:59 [pool-7-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:42:13 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1241,localport=8189]
+INFO  2022-09-23 23:42:13 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:42:13 [pool-8-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:42:13 [pool-8-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:42:22 [pool-8-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:45:16 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1245,localport=8189]
+INFO  2022-09-23 23:45:16 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:45:16 [pool-9-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+ERROR 2022-09-23 23:45:16 [pool-9-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:21) - Connection to SQLite has NOT been established.
+INFO  2022-09-23 23:45:16 [pool-9-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:45:26 [pool-9-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:47:07 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1252,localport=8189]
+INFO  2022-09-23 23:47:07 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:47:07 [pool-10-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:47:07 [pool-10-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:47:09 [pool-10-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:47:31 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1256,localport=8189]
+INFO  2022-09-23 23:47:31 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:47:31 [pool-11-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:47:31 [pool-11-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:47:34 [pool-11-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-23 23:50:03 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1260,localport=8189]
+INFO  2022-09-23 23:50:03 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-23 23:50:03 [pool-12-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-23 23:50:03 [pool-12-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-23 23:50:07 [pool-12-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-24 00:10:38 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1267,localport=8189]
+INFO  2022-09-24 00:10:38 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-24 00:10:38 [pool-13-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-24 00:10:38 [pool-13-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-24 00:10:41 [pool-13-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-24 00:15:17 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1271,localport=8189]
+INFO  2022-09-24 00:15:17 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-24 00:15:17 [pool-14-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-24 00:15:17 [pool-14-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-24 00:15:20 [pool-14-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-24 00:16:01 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1275,localport=8189]
+INFO  2022-09-24 00:16:01 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-24 00:16:01 [pool-15-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-24 00:16:01 [pool-15-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-24 00:16:07 [pool-15-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-24 00:17:00 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1279,localport=8189]
+INFO  2022-09-24 00:17:00 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-24 00:17:00 [pool-16-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-24 00:17:00 [pool-16-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-24 00:17:03 [pool-16-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-24 00:17:26 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1284,localport=8189]
+INFO  2022-09-24 00:17:26 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-24 00:17:26 [pool-17-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-24 00:17:26 [pool-17-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-24 00:17:34 [pool-17-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-24 00:19:24 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1290,localport=8189]
+INFO  2022-09-24 00:19:24 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-24 00:19:24 [pool-18-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-24 00:19:24 [pool-18-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-24 00:19:29 [pool-18-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-24 00:20:09 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1297,localport=8189]
+INFO  2022-09-24 00:20:09 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-24 00:20:09 [pool-19-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-24 00:20:09 [pool-19-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-24 00:20:12 [pool-19-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-24 00:20:41 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1301,localport=8189]
+INFO  2022-09-24 00:20:41 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-24 00:20:41 [pool-20-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-24 00:20:41 [pool-20-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-24 00:20:44 [pool-20-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-24 00:21:34 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1308,localport=8189]
+INFO  2022-09-24 00:21:34 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-24 00:21:34 [pool-21-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-24 00:21:34 [pool-21-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-24 00:21:44 [pool-21-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-24 00:27:20 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1318,localport=8189]
+INFO  2022-09-24 00:27:20 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-24 00:27:20 [pool-22-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-24 00:27:20 [pool-22-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+INFO  2022-09-24 00:27:37 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1322,localport=8189]
+INFO  2022-09-24 00:27:37 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-24 00:27:37 [pool-23-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-24 00:27:37 [pool-23-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-24 00:27:45 [pool-22-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+ERROR 2022-09-24 00:27:47 [pool-23-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client
+INFO  2022-09-24 00:30:29 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:39) - Client connected: Socket[addr=/127.0.0.1,port=1326,localport=8189]
+INFO  2022-09-24 00:30:29 [main] ru.geekbrains.server.chat.MyServer (MyServer.java:37) - Waiting client connection...
+INFO  2022-09-24 00:30:29 [pool-24-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:17) - Connection to SQLite has been established.
+INFO  2022-09-24 00:30:29 [pool-24-thread-1] ru.geekbrains.server.chat.auth.AuthService (AuthService.java:25) - Connection to SQLite has been closed.
+ERROR 2022-09-24 00:30:41 [pool-24-thread-1] ru.geekbrains.server.chat.ClientHandler$1 (ClientHandler.java:51) - Failed to read message from client

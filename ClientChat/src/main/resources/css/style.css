@@ -1,0 +1,20 @@
+.framed.text-area {
+    /* set size to picture size */
+    -fx-pref-height: 958;
+    -fx-pref-width: 958;
+    -fx-min-height: 958;
+    -fx-min-width: 958;
+    -fx-max-height: 958;
+    -fx-max-width: 958;
+
+    /* necessary padding to not cover the speech bubble with text */
+    -fx-padding: 95 135 329 90;
+
+    /* some image of a speech bubble from the web */
+    -fx-background-image: url(http://res.freestockphotos.biz/pictures/15/15674-illustration-of-a-cartoon-speech-bubble-pv.png);
+}
+
+.framed.text-area .scroll-pane .viewport,
+.framed.text-area .content {
+    -fx-background-color: red;
+}

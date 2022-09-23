@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.DragEvent;
 import ru.geekbrains.clientchat.ChatFileHandler;
 import ru.geekbrains.clientchat.ClientChat;
 import ru.geekbrains.clientchat.dialogs.Dialogs;

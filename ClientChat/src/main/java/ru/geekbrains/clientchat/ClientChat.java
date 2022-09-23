@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.geekbrains.clientchat.controllers.AuthController;
@@ -63,8 +64,11 @@ public class ClientChat extends Application {
         chatWindowLoader.setLocation(ClientChat.class.getResource("chat-template.fxml"));
 
         Parent root = chatWindowLoader.load();
-        chatStage.setScene(new Scene(root));
-        //getChatController().initializeMessageHandler();
+//        chatStage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+//        root.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+        scene.getStylesheets().add("css/style.css");
+        chatStage.setScene(scene);
     }
 
     private void initAuthDialog() throws IOException {
@@ -74,6 +78,7 @@ public class ClientChat extends Application {
 
         authStage = new Stage();
         authStage.initOwner(chatStage);
+        authStage.initStyle(StageStyle.TRANSPARENT);
         authStage.initModality(Modality.WINDOW_MODAL);
         authStage.setScene(new Scene(authDialogPanel));
     }
